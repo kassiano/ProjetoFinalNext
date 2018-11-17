@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".dashboard.ui.NewAssetActivity"
+            android:background="#FFF">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cadastro de ativo"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginBottom="30dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categoria"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/spinner_bg"
+                android:orientation="horizontal">
+
+            <Spinner
+                    android:id="@+id/spCategoria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:spinnerMode="dropdown"/>
+
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/drop_down"/>
+        </RelativeLayout>
+
+        <View android:layout_width="wrap_content" android:layout_height="@dimen/default_space"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Produto"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/spinner_bg"
+                android:orientation="horizontal">
+
+            <Spinner
+                    android:id="@+id/spProduto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:spinnerMode="dropdown"/>
+
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/drop_down"/>
+        </RelativeLayout>
+
+
+        <View android:layout_width="wrap_content" android:layout_height="@dimen/default_space"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ativo"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
+
+        <EditText
+                android:id="@+id/edNome"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/spinner_bg"
+                android:paddingStart="8dp"
+                android:hint="Ex: PETR4"
+                android:lines="1"
+                android:paddingLeft="8dp"/>
+
+        <View android:layout_width="wrap_content" android:layout_height="@dimen/default_space"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantidade"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"/>
+
+        <EditText
+                android:id="@+id/edQuantidade"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/spinner_bg"
+                android:inputType="number"
+                android:hint="Ex: 100"
+                android:paddingStart="8dp"
+                android:paddingLeft="8dp" />
+
+        <View android:layout_width="wrap_content" android:layout_height="@dimen/default_space" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preço"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"/>
+
+        <EditText
+                android:id="@+id/edPreco"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/spinner_bg"
+                android:inputType="numberDecimal"
+                android:hint="Ex: 0.00"
+                android:paddingStart="8dp"
+                android:paddingLeft="8dp"/>
+
+        <View android:layout_width="wrap_content" android:layout_height="@dimen/default_space"/>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="saveAsset"
+                android:text="salvar"
+                android:background="@drawable/spinner_bg"
+                android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".dashboard.ui.MainActivity"
+        android:animateLayoutChanges="true">
+
+
+    <android.support.constraint.Group
+            android:id="@+id/layoutComponents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="rvAssets,fab"
+            android:visibility="gone" />
+
+    <android.support.constraint.Group
+            android:id="@+id/loadingComponents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="bgLoading,ic_icon"
+            android:visibility="visible" />
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvAssets"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/background_light"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/asset_view_item"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_input_add"
+            android:tint="#FFF"
+            android:backgroundTint="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/rvAssets"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintHorizontal_bias="1" />
+
+    <View android:id="@+id/bgLoading"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          android:background="@color/colorPrimary"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintVertical_bias="1.0"/>
+
+    <ImageView
+            android:id="@+id/ic_icon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_investimentos"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Investimentos"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:textSize="21sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_bias="0.65" />
+
+</android.support.constraint.ConstraintLayout>
+
