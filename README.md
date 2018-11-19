@@ -46,4 +46,9 @@ Utilizei um ViewModel para cada Activity do projeto utilizei LiveDatas para rece
 ### Retrofit 
 
 Implementei o Retrofit para acesso a uma API externa para buscar preços de ações, implementei seu repositório, mas não está em uso no APP. O App trabalha hje 100% OffLine. 
+
+
+### DataBinding
+
+Utilizei o dataBinding na tela de Atualizar um Ativo. Para atualizar um item você precisa de um longclick no item.
     
