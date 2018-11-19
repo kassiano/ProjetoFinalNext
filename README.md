@@ -10,17 +10,18 @@ O App criado se chama "Meus investimentos" e é um App para controle de carteira
 Para o desenvolvimento desse projeto foi utilizados tecnologias vistas durante o curso. 
 
 
-
 ### Arquitetura MVVM e Clean Architecture
 
 Segui uma arquitetura baseada em Clean Architecture visando um desacoplamento de camadas. Dividi da seguinte maneira: 
 
-* "data": Essa Camada é responsavel por prover dados. Aqui tem os DAOs, assim como as classes de entidades do banco e também os acesso a APIs externas
+* "data": Essa Camada é responsavel por prover dados. Aqui tem os DAOs, assim como as classes de entidades do banco e também os acesso a APIs externas.
 
 * "repository": Camada para abstração de dados, para quem acessa o reposiório não importa se a informação está vindo de uma banco de dados Sqlite ou de uma Api da internet.
 
 * "dashboard": Camada com a lógica de negócio e de apresentação do App. Aqui você encontra as Activities, os ViewModels bem como as classes de dominio da aplicação.
 
+
+Obs: Observe que nessa arquitetura a camada de apresentação não conhece as classes anotadas como `@Entity` por isso a criação das classes que eu chamei de `Summary`. No meu entendimento, se eu levo um classe `Entity` para a camada de apresentação eu estou quebrando o Clean Architecture porque eu estaria prendendo a aplicação ao Room. 
 
 ### Bando de dados - Room 
 
