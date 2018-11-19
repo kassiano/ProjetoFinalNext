@@ -6,4 +6,6 @@
     <string name="form_error_name">Preencha o nome</string>
     <string name="form_error_quantity">Preencha a quantidade</string>
     <string name="form_error_price">Preencha o preço</string>
+    <string name="empty_list_msg">Utilize o botão abaixo para adicionar um novo ativo</string>
+    <string name="empty_list_title">Bem vindo a sua carteira de investimentos!</string>
 </resources>

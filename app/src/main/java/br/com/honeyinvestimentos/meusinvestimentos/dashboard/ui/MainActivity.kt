@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
@@ -18,8 +17,7 @@ import br.com.honeyinvestimentos.meusinvestimentos.dashboard.ui.dialogs.UpdateIt
 import br.com.honeyinvestimentos.meusinvestimentos.dashboard.ui.viewmodel.DashboadViewModel
 import br.com.honeyinvestimentos.meusinvestimentos.fp.pipe
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.*
 
 
 class MainActivity : AppCompatActivity(),
@@ -47,8 +45,18 @@ class MainActivity : AppCompatActivity(),
 
     fun onLongClick(asset: AssetSummary):Boolean{
 
-        val dialog = UpdateItemDialog.newInstance(asset.assetId, asset.currentPrice)
-        dialog.show(supportFragmentManager, "update_item")
+        val opcoes = listOf("Editar", "Excluir")
+        selector("O que deseja fazer?", opcoes) { dialogInterface, position ->
+            when (position) {
+                0 -> {
+                    startActivity<EditAssetActivity>(
+                        EditAssetActivity.ID_ASSET_EDIT to asset.assetId)
+                }
+                1-> {
+                    viewModel.removeAsset(asset)
+                }
+            }
+        }
 
         return true
     }
@@ -69,7 +77,15 @@ class MainActivity : AppCompatActivity(),
 
             assets?.let { assetSummary ->
 
-                assetAdapter.assets = assetSummary
+                if(assetSummary.size ==0){
+                    emptyListComponents.visibility = VISIBLE
+                    rvAssets.visibility = GONE
+                }else{
+                    assetAdapter.assets = assetSummary
+                    emptyListComponents.visibility = GONE
+                    rvAssets.visibility = VISIBLE
+                }
+
             }
 
         })
@@ -80,6 +96,7 @@ class MainActivity : AppCompatActivity(),
         }
 
         observeLoading()
+        observeGenericError()
     }
 
     override fun onResume() {
@@ -108,6 +125,21 @@ class MainActivity : AppCompatActivity(),
         })
     }
 
+    private fun observeGenericError(){
+        viewModel.genericError.observe(this, Observer {
+            error->
+            error?.let {
+
+                if(error){
+                    alert("Generic Error"){
+                        okButton {  }
+                    }.show()
+                }
+            }
+
+        })
+    }
+
     private fun runAnimation(){
         AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation) pipe {
 
@@ -120,13 +152,22 @@ class MainActivity : AppCompatActivity(),
     private fun setHideAndShowScrolledFloatingButton() {
 
         rvAssets.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                if (dy > 0 && fab.visibility == View.VISIBLE) {
+
+                if( dy > 0 || dy < 0 && fab.isShown)
                     fab.hide()
-                } else if (dy < 0 && fab.visibility != View.VISIBLE) {
+            }
+
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+
+                if(newState == RecyclerView.SCROLL_STATE_IDLE){
                     fab.show()
                 }
+
+                super.onScrollStateChanged(recyclerView, newState)
             }
         })
     }

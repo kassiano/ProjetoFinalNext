@@ -53,8 +53,6 @@ class NewAssetViewModel:BaseViewModel() {
     fun newAsset(asset: Asset){
 
 
-
-
         /*
         stockRepository.getStockQuotes(
             asset.name,
@@ -93,9 +91,10 @@ class NewAssetViewModel:BaseViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        disposeCat.dispose()
-        disposeInsert.dispose()
-        disposeProd.dispose()
+
+        if(::disposeCat.isInitialized) disposeCat.dispose()
+        if(::disposeInsert.isInitialized)  disposeInsert.dispose()
+        if(::disposeProd.isInitialized) disposeProd.dispose()
     }
 
 }

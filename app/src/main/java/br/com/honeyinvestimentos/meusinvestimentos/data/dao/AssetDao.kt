@@ -11,15 +11,18 @@ interface AssetDao {
     fun insert(asset: Asset):Long
 
     @Update
-    fun update(asset: Asset)
+    fun update(asset: Asset):Int
 
     @Delete
-    fun delete(asset: Asset)
+    fun delete(asset: Asset):Int
 
     @Query("select * from asset")
     fun getAll(): Single<List<Asset>>
 
     @Query("UPDATE asset set  currentPrice= :currentValue where id = :assetId")
     fun updateCurrentValue(assetId:Int, currentValue:Double) : Int
+
+    @Query("select * from asset where id = :assetId")
+    fun getById(assetId: Int): Single<Asset>
 
 }

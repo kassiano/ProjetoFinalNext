@@ -13,15 +13,58 @@
             android:id="@+id/layoutComponents"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="rvAssets,fab"
+            app:constraint_referenced_ids="fab"
             android:visibility="gone" />
 
     <android.support.constraint.Group
             android:id="@+id/loadingComponents"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="bgLoading,ic_icon"
-            android:visibility="visible" />
+            app:constraint_referenced_ids="bgLoading,ic_icon,tvTitle"
+            android:visibility="gone" />
+
+
+    <android.support.constraint.Group
+            android:id="@+id/emptyListComponents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="img_empty_list,title_empty_list,text_empty_list"
+            android:visibility="gone" />
+
+    <ImageView
+            android:id="@+id/img_empty_list"
+            android:src="@drawable/ic_add_alert"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="@string/empty_list_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_bias="0.35" />
+
+    <TextView
+            android:id="@+id/title_empty_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_list_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+    <TextView
+            android:id="@+id/text_empty_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_list_msg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_bias="0.55"/>
 
     <android.support.v7.widget.RecyclerView
             android:id="@+id/rvAssets"

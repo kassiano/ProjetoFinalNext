@@ -20,6 +20,7 @@ abstract class BaseViewModel: ViewModel() {
         when (this) {
             is DashboadViewModel -> injector.injectDashboard(this)
             is NewAssetViewModel -> injector.injectNewAsset( this )
+            is EditAssetViewModel -> injector.injectEditAsset(this)
         }
     }
 

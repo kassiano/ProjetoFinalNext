@@ -19,6 +19,7 @@ abstract class BaseRepository {
         when (this) {
             is ProductRepository -> injector.injectProduct(this)
             is StockQuotesRepository-> injector.injectStockRep(this)
+            is AssetRepository -> injector.injectAsset(this)
         }
     }
 }

@@ -27,6 +27,11 @@ class AssetSummary( val assetId:Int,
                 calcYield(asset.currentPrice, asset.buyPrice)
             )
         }
+
+        fun createEmptyAssetWithId(assetSummary:AssetSummary):Asset{
+            return Asset(assetSummary.assetId,"",0,0,0,0.0,0.0)
+        }
+
     }
 }
 

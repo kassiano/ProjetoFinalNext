@@ -30,6 +30,9 @@ class ProductRepository:BaseRepository() {
     fun updateAssetValue(assetId: Int, newValue: Double) =
          db.assetDao().updateCurrentValue(assetId, newValue)
 
+    fun removeAsset(asset: Asset):Int =
+        db.assetDao().delete(asset)
+
 
 
     /*

@@ -20,6 +20,8 @@ class DashboadViewModel : BaseViewModel() {
     lateinit var disposable: Disposable
     var isfirstLoad = true
 
+    val genericError = MutableLiveData<Boolean>()
+
     init {
         firstLoadAssets()
     }
@@ -45,7 +47,7 @@ class DashboadViewModel : BaseViewModel() {
                  isfirstLoad = false
              },
              {
-                 onRetriveAssetsError()
+                 onRetriveAssetsError(it)
              })
 
     }
@@ -64,7 +66,7 @@ class DashboadViewModel : BaseViewModel() {
                 onRetriveAssetsSuccess(result)
             },
             {
-                onRetriveAssetsError()
+                onRetriveAssetsError(it)
             })
     }
 
@@ -81,8 +83,8 @@ class DashboadViewModel : BaseViewModel() {
         loadingData.value = false
     }
 
-    fun onRetriveAssetsError(){
-
+    fun onRetriveAssetsError(error:Throwable){
+        genericError.value = true
     }
 
 
@@ -97,9 +99,25 @@ class DashboadViewModel : BaseViewModel() {
         }
     }
 
+
+
+    fun removeAsset(asset: AssetSummary) {
+
+        disposable = Completable.fromAction {
+
+            repository.removeAsset(AssetSummary.createEmptyAssetWithId(asset))
+
+        }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                loadAssets()
+            }
+
+    }
+
     override fun onCleared() {
         super.onCleared()
-        disposable.dispose()
+        if(::disposable.isInitialized) disposable.dispose()
     }
 
 }
